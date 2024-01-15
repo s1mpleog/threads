@@ -30,9 +30,12 @@ export default function LoginForm() {
     console.log(values);
   };
   return (
-    <div className="flex flex-col items-center justify-center sm:-mt-20 mt-0 space-y-4">
+    <div className="flex flex-col items-center justify-center sm:-mt-20 sm:max-w-sm mx-auto mt-0 space-y-4">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 sm:w-full"
+        >
           <FormField
             control={form.control}
             name="email"
@@ -77,7 +80,7 @@ export default function LoginForm() {
         </form>
       </Form>
       <Link href="/register">
-        <Button variant="link">Don&apos;t have an account ?</Button>
+        <Button variant="link">Don&apos;t have an Account ?</Button>
       </Link>
     </div>
   );

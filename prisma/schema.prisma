@@ -1,10 +1,11 @@
-generator client {
-  provider = "prisma-client-js"
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js"
 }
 
 model Account {
@@ -24,6 +25,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -32,6 +34,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
@@ -39,6 +43,7 @@ model User {
   name          String?
   email         String?      @unique
   emailVerified DateTime?
+  password      String?
   image         String?
   userName      String?      @unique
   bio           String?      @db.Text
@@ -70,6 +75,8 @@ model Thread {
   author      User         @relation(fields: [authorId], references: [id])
   likes       ThreadLike[]
   comments    Comment[]
+
+  @@index([authorId])
 }
 
 model ThreadLike {
@@ -79,6 +86,9 @@ model ThreadLike {
   userId       String
   Thread       Thread @relation(fields: [threadId], references: [id])
   user         User   @relation(fields: [userId], references: [id])
+
+  @@index([threadId])
+  @@index([userId])
 }
 
 model Follow {
@@ -89,6 +99,7 @@ model Follow {
   following   User   @relation("Following", fields: [followingId], references: [id])
 
   @@unique([followersId, followingId])
+  @@index([followingId])
 }
 
 model Comment {
@@ -101,6 +112,9 @@ model Comment {
   author       User?    @relation(fields: [authorId], references: [id])
   threadId     Thread   @relation(fields: [threadPostId], references: [id])
   replies      Reply[]
+
+  @@index([authorId])
+  @@index([threadPostId])
 }
 
 model Reply {
@@ -112,4 +126,7 @@ model Reply {
   author    User?    @relation(fields: [authorId], references: [id])
   commentId String
   comment   Comment  @relation(fields: [commentId], references: [id])
+
+  @@index([authorId])
+  @@index([commentId])
 }
