@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FileUpload } from "@/components/FileUpload";
 import { useState, useTransition } from "react";
-import Image from "next/image";
+import Image from "next/image"; 
 import { onBoarding } from "@/actions/on-boarding";
 import { useRouter } from "next/navigation";
 
