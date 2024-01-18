@@ -36,10 +36,10 @@ export default async function ShowThreads() {
                 {post.author.userName}
               </Link>
                 <p className="ml-auto text-sm text-slate-600 left-0">{relativeDate(post.createdAt)}</p>
-              <Link  href={`/posts${post.id}`} className="">
+              <Link  href={`/posts/${post.id}`} className="">
                 <p>{post.postMessage}</p>
               </Link>
-              <Link href={`/posts${post.id}`} className="my-5">
+              <Link href={`/posts/${post.id}`} className="my-5">
                 <Image
                   className="object-cover z-50 sm:w-[400px] rounded-md object-center sm:h-[400px]"
                   alt="post image"
