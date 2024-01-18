@@ -7,8 +7,10 @@ export default async function LogoutButton() {
     await signOut();
   };
   return (
+    <div>
     <form action={onSubmit}>
       <Button>Log out</Button>
     </form>
+    </div>
   );
 }

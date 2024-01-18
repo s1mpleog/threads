@@ -44,7 +44,7 @@ export default async function Sidebar() {
     },
   ];
   return (
-    <aside className="flex flex-col  sm:space-y-6 w-full sm:w-auto min-h-screen items-center sm:my-2 sm:justify-start justify-center">
+    <div className="flex flex-col  sm:space-y-6 w-full sm:w-auto min-h-screen items-center sm:my-2 sm:justify-start justify-center">
       <div className="sm:flex hidden">
         <Logo />
       </div>
@@ -54,13 +54,15 @@ export default async function Sidebar() {
             key={route.href}
             className="flex items-center justify-center sm:my-10"
           >
-            <Link
-              href={route.href}
-              className="flex items-center justify-center sm:gap-x-2 pb-2 text-lg font-medium"
-            >
-              <route.icon size={30} />
-              <p className="sm:flex hidden">{route.label}</p>
-            </Link>
+            <div>
+              <Link
+                href={route.href}
+                className="flex items-center justify-center sm:gap-x-2 pb-2 text-lg font-medium"
+              >
+                <route.icon size={30} />
+                <p className="sm:flex hidden">{route.label}</p>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -70,6 +72,6 @@ export default async function Sidebar() {
       <div className="sm:flex hidden absolute sm:bottom-4">
         <LogoutButton />
       </div>
-    </aside>
+    </div>
   );
 }

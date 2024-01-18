@@ -13,9 +13,10 @@ export default async function ShowThreads() {
     },
   });
   return (
-    <div className="sm:my-20 my-5 flex flex-col space-y-5 sm:items-start items-center sm:justify-start justify-center">
+    <main className="sm:my-20 my-5 flex flex-col space-y-5 sm:items-start items-center sm:justify-start justify-center">
       {posts.map((post) => (
-        <Link href={`/posts/${post.id}`} key={post.id}>
+        <div key={post.id}>
+        <div>
           <div className="flex items-start border-b relative justify-start space-x-2">
             <div>
               <Image
@@ -35,10 +36,10 @@ export default async function ShowThreads() {
                 {post.author.userName}
               </Link>
                 <p className="ml-auto text-sm text-slate-600 left-0">{relativeDate(post.createdAt)}</p>
-              <div className="">
+              <Link  href={`/posts${post.id}`} className="">
                 <p>{post.postMessage}</p>
-              </div>
-              <div className="my-5">
+              </Link>
+              <Link href={`/posts${post.id}`} className="my-5">
                 <Image
                   className="object-cover z-50 sm:w-[400px] rounded-md object-center sm:h-[400px]"
                   alt="post image"
@@ -46,12 +47,12 @@ export default async function ShowThreads() {
                   width={1980}
                   height={1080}
                 />
-              </div>
-              <div></div>
+              </Link>
             </div>
           </div>
-        </Link>
+        </div>
+        </div>
       ))}
-    </div>
+    </main>
   );
 }

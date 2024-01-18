@@ -7,8 +7,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-    <main className="min-h-screen flex justify-between sm:mx-0 mx-2">
+    <div className="min-h-screen flex justify-between sm:mx-0 mx-2">
       <aside className="sm:flex fixed min-h-screen sm:w-[300px] w-full sm:top-0 bottom-0 z-50 sm:pr-10">
         <Sidebar />
       </aside> 
@@ -18,7 +17,6 @@ export default function MainLayout({
       <div className="sm:w-[300px] sm:flex hidden w-0 top-0 z-50 pr-10 right-10">
         <Recommend />
       </div>
-    </main>
-    </html> 
+    </div>
   );
 }

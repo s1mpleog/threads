@@ -13,7 +13,6 @@ export default function ProfilePage({ user }:  ProfilePageProps) {
         <h3 className='sm:text-xl text-base font-semibold'>{user?.name}</h3>
         <p className='mt-3 sm:text-base text-sm'>{user?.userName}</p>
         <p className='mt-10 sm:text-base text-sm'>{user?.bio}</p>
-        <p></p>
       </div>
       <div>
         <Image className='rounded-full min-w-[80px] min-h-[80px]' src={user?.image!} width={80} height={80} alt={user?.name|| "profile image"} />
