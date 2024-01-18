@@ -14,8 +14,15 @@ import {
 import { useForm } from "react-hook-form";
 import { RegisterSchema } from "@/schemas";
 import Link from "next/link";
+import { useState, useTransition } from "react";
+import { login } from "@/actions/login";
+import { ErrorMessage } from "@/components/ErrorMessage";
+import { SuccessMessage } from "@/components/SuccessMessage";
 
 export default function LoginForm() {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -24,13 +31,17 @@ export default function LoginForm() {
     },
   });
 
-  const { isValid, isSubmitting } = form.formState;
-
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    console.log(values);
+    setSuccess("");
+    setError("");
+    startTransition(() => {
+      login(values).then((data) => {
+        setError(data?.error), setSuccess(data?.success);
+      });
+    });
   };
   return (
-    <div className="flex flex-col items-center justify-center sm:-mt-20 sm:max-w-sm mx-auto mt-0 space-y-4">
+    <div className="flex flex-col items-center overflow-hidden justify-center sm:-mt-20 sm:max-w-sm mx-auto mt-0 space-y-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -44,7 +55,7 @@ export default function LoginForm() {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
-                    disabled={isSubmitting}
+                    disabled={isPending}
                     className="bg-primary-foreground"
                     {...field}
                     type="email"
@@ -63,7 +74,7 @@ export default function LoginForm() {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input
-                    disabled={isSubmitting}
+                    disabled={isPending}
                     className="bg-primary-foreground"
                     {...field}
                     type="password"
@@ -74,7 +85,9 @@ export default function LoginForm() {
               </FormItem>
             )}
           />
-          <Button disabled={isSubmitting} className="w-full" type="submit">
+          <ErrorMessage message={error} />
+          <SuccessMessage message={success} />
+          <Button disabled={isPending} className="w-full" type="submit">
             Login
           </Button>
         </form>

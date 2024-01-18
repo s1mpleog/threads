@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import "@/app/globals.css"
 
 export default function AuthLayout({
   children,
@@ -7,7 +7,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen space-y-6 mx-5 my-20 sm:my-0">
+    <main className="min-h-screen space-y-6 mx-5 overflow-hidden py-24 sm:py-0">
       <div className="hidden sm:block relative max-w-[1600px] mx-auto h-[500px] ">
         <Image
           src="/images/authbanner.png"

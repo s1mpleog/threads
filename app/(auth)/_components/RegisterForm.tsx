@@ -14,7 +14,7 @@ import {
 import { useForm } from "react-hook-form";
 import { RegisterSchema } from "@/schemas";
 import Link from "next/link";
-import { registerUserToDb } from "@/actions/register-user";
+import { registerUserToDb } from "@/actions/register";
 
 export default function RegisterForm() {
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -29,14 +29,14 @@ export default function RegisterForm() {
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     registerUserToDb(values);
-    form.reset();
+    
   };
   return (
-    <div className="flex flex-col items-center justify-center sm:-mt-20 max-w-sm mx-auto mt-0 space-y-4">
+    <div className="flex flex-col items-center justify-center sm:-mt-20 sm:max-w-sm  mx-auto mt-0 space-y-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 w-full"
+          className="space-y-4 sm:w-full"
         >
           <FormField
             control={form.control}
@@ -82,7 +82,9 @@ export default function RegisterForm() {
         </form>
       </Form>
       <Link href="/login">
-        <Button variant="link">Already have an Account ?</Button>
+        <Button variant="link">
+          Already have an Account ?
+        </Button>
       </Link>
     </div>
   );
