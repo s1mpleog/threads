@@ -44,8 +44,9 @@ export default async function ShowThreads() {
                   className="object-cover sm:w-[400px] rounded-md object-center sm:h-[400px]"
                   alt="post image"
                   src={post.postImage}
-                  width={1980}
-                  height={1080}
+                  width={400}
+                  height={400}
+                  quality={90}
                 />
               </Link>
             </div>
