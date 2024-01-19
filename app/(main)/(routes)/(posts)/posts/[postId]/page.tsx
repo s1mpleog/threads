@@ -71,8 +71,8 @@ export default async function PostIdPage({
                 className="object-cover z-50 sm:w-[400px] rounded-md sm:h-[400px]"
                 alt="post image"
                 src={post?.postImage!}
-                width={1980}
-                height={1080}
+                width={400}
+                height={400}
               />
             </div>
           </div>
