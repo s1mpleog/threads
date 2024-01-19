@@ -40,7 +40,7 @@ export default async function PostIdPage({
     }
   })
   return (
-    <div className="my-20 flex flex-col space-y-5 items-start justify-start">
+    <div className="sm:my-20 my-4 flex flex-col space-y-5 items-start justify-start">
       <div>
         <div className="flex items-start relative justify-start space-x-2">
           <div>
