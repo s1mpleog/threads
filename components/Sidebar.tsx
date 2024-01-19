@@ -44,11 +44,11 @@ export default async function Sidebar() {
     },
   ];
   return (
-    <div className="flex flex-col  sm:space-y-6 w-full sm:w-auto min-h-screen items-center sm:my-2 sm:justify-start justify-center">
+    <div className="flex flex-col sm:space-y-6 w-full sm:w-auto sm:min-h-screen items-center sm:my-2 sm:justify-start justify-center">
       <div className="sm:flex hidden">
         <Logo />
       </div>
-      <div className="sm:block flex sm:gap-0 sm:relative absolute sm:bottom-0 sm:bg-transparent bg-white w-full items-start justify-evenly pt-4 bottom-0">
+      <div className="sm:block flex sm:gap-0 sm:relative absolute sm:bottom-0 sm:bg-transparent bg-white w-full items-start justify-evenly pt-4 z-50 bottom-0">
         {sidebarRoutes.map((route) => (
           <div
             key={route.href}

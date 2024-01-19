@@ -41,7 +41,7 @@ export default async function ShowThreads() {
               </Link>
               <Link href={`/posts/${post.id}`} className="my-5">
                 <Image
-                  className="object-cover z-50 sm:w-[400px] rounded-md object-center sm:h-[400px]"
+                  className="object-cover sm:w-[400px] rounded-md object-center sm:h-[400px]"
                   alt="post image"
                   src={post.postImage}
                   width={1980}

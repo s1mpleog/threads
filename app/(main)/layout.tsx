@@ -8,7 +8,7 @@ export default function MainLayout({
 }) {
   return (
     <div className="min-h-screen flex justify-between sm:mx-0 mx-2">
-      <aside className="sm:flex fixed min-h-screen sm:w-[300px] w-full sm:top-0 bottom-0 z-50 sm:pr-10">
+      <aside className="sm:flex fixed z-40 sm:w-[300px] w-full sm:top-0 bottom-0 sm:pr-10">
         <Sidebar />
       </aside> 
       <div className="sm:ml-[300px] max-w-[600px] mx-auto ml-0 flex-1 h-screen flex items-start justify-center  mr-10 py-4">
